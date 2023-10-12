@@ -21,11 +21,23 @@
 	</head>
 	<body>
 		<script>
-			var today = new Date();
+			var name; var kor; var eng;
+			var total; var avg;
 			function writeBtn(){
-				var name = document.querySelector("#name").value;
-				document.querySelector("#t01").innerText = name;
-				document.querySelector("#t02").innerText = today;
+				name = document.querySelector("#name").value;
+				kor = Number(document.querySelector("#kor").value);
+				eng = Number(document.querySelector("#eng").value);
+				total = kor+eng;
+				avg = total/2;
+				var htmlData = "";
+				htmlData +="<tr>";
+				htmlData +="<td>홍길동</td>";
+				htmlData +="<td>100</td>";
+				htmlData +="<td>100</td>";
+				htmlData +="<td>200</td>";
+				htmlData +="<td>100</td>";
+				htmlData +="</tr>";	
+				document.querySelector("#content").innerHTML =htmlData;
 			}
 		</script>
 		<section>
@@ -46,20 +58,18 @@
 			  <col style="width:20%;">
 			  <col style="width:20%;">
 			</colgroup>
-			<tr>
-				<th>이름</th>
-				<th>국어</th>
-				<th>영어</th>
-				<th>합계</th>
-				<th>평균</th>
-			</tr>
-			<tr>
-				<td id="t01"></td>
-				<td id="t02"></td>
-				<td id="t03"></td>
-				<td id="t04"></td>
-				<td id="t05"></td>
-			</tr>
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>국어</th>
+					<th>영어</th>
+					<th>합계</th>
+					<th>평균</th>
+				</tr>
+			</thead>
+			<tbody id="content">
+				
+			</tbody>
 		</table>
 		
 	
