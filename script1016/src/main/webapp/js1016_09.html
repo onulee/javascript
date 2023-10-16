@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>함수</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>
+		<script>
+			//btn클릭시 input1+input2 = #main 값을 출력하시오.
+			function btn(){
+				var input1 = Number($("#input1").val());
+				var input2 = Number($("#input2").val());
+				$(".main").text(input1+input2);
+			}
+		</script>
+		<input type="text" name="input1" id="input1"><br>
+		<input type="text" name="input2" id="input2"><br>
+		<button onclick="btn()">버튼</button>
+		<div class="main"></div>
+	
+	</body>
+</html>
