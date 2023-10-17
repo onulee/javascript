@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<title>제이쿼리-선택자</title>
+		<style>
+			*{margin:0; padding:0; text-align: center;}
+			section{width:100px; height:100px; border:3px solid black; 
+			margin:30px auto; }
+			#txt{text-align: center; width:100%; height:100px; font-size: 20px;
+			font-weight: 700;}
+			button{width:100px; height:40px; }
+		</style>
+		<script>
+			//제이쿼리 구문 선언
+			$(function(){
+				var w = parseInt($("section").css("width")); //section의 width값 읽어오기
+				$("#txt").text(w+"px");                 //txt에 값 추가
+				//제이쿼리 클릭 이벤트 호출
+				$("#btn").click(function(){
+					//alert("테스트");
+					w += 10;
+					console.log(w);
+					//$("section").css("width"); //현재값 읽기
+					$("section").css("width",w+"px"); //현재값을 새롭게 지정
+					$("#txt").text(w+"px");
+				});
+				$("#btn2").click(function(){
+					//alert("테스트");
+					if(w==0){
+						$("#txt").text("");
+						alert("더 이상 축소가 되지 않습니다.");
+						return;
+					}
+					w -= 10;
+					console.log(w);
+					$("section").css("width",w+"px"); //현재값을 새롭게 지정
+					$("#txt").text(w+"px");
+				});
+				
+			});
+		    
+		    //자바스크립트 onclick="btn()" 이벤트 함수호출
+		    //function btn(){ }
+				
+		</script>
+	</head>
+	<body>
+		<section>
+			<div id="txt"></div>
+		</section>
+		<button id="btn">확대</button>
+		<button id="btn2">축소</button>
+	
+	</body>
+</html>
