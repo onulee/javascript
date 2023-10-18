@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>선택자</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style>
+			*{margin:0; padding:0;}
+			div{width:500px; height:100px; border:1px solid black; }
+			form{height:2000px;}
+		</style>
+		<script>
+			$(function(){
+				$("#btn").click(function(){
+					console.log($("input[type=checkbox]"));
+					var temp = 0;
+					$("input[type=checkbox]").each(function(){
+						if(this.checked == false){
+							temp = 1;
+							return false;
+						}
+					}); //each
+					
+					/* for문 사용방법
+					var in_ch = $("input[type=checkbox]");
+					for(var i=0;i<in_ch.length;i++){
+						if(in_ch[i].checked == false){
+							temp = 1;
+							break;
+						}
+					}
+					*/
+					
+					if(temp==1){
+						//alert("동의를 모두하셔야 회원가입이 가능합니다.");
+						if(confirm("모두 동의하셔야 회원가입이 가능합니다.\n모두 동의할까요?")){
+						     $("input[type=checkbox]").each(function(){
+								 this.checked = true;
+							 })//each
+						}//if
+					}//if-temp
+					    
+					
+				})//#btn
+			})//jquery
+		</script>
+	</head>
+	<body>
+		<form action="#" method="get" name="frm">
+			<div>1번 항목 내용</div>
+			<label for="agree1">1번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree1" value="agree1">
+			<br>
+			<div>2번 항목 내용</div>
+			<label for="agree2">2번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree2" value="agree2">
+			<br>
+			<div>3번 항목 내용</div>
+			<label for="agree3">3번항목 동의합니다</label>
+			<input type="checkbox" name="agree" id="agree3" value="agree3">
+			<br>
+			<br>
+			<button type="button" id="btn">확인</button>
+			
+		</form>
+	
+	</body>
+</html>
