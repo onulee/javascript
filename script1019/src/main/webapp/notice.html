@@ -77,7 +77,36 @@
 			   $("#fn_txt_srch").keyup(function(e){
 				   console.log(e.keyCode);
 				   if(e.keyCode == 13){
-					  alert("테스트");
+					  var s_word = $("#fn_txt_srch").val();
+					   $.ajax({
+							url:"datafile/board.json",
+							type:"get",
+							data:"",
+							dataType:"json",
+							success:function(data){
+								console.log(data);
+								var hdata = "";
+								for(var i=0;i<data.length;i++){
+									var title = data[i].btitle;
+									if(title.indexOf(s_word)==-1){
+										continue;
+									}
+									hdata += "<tr>";
+									hdata += "<td>"+data[i].boardNo+"</td>";
+									hdata += "<td><a href='#'>"+data[i].btitle+"</a></td>";
+									hdata += "<td>"+data[i].user+"</td>";
+									hdata += "<td>"+data[i].bdate+"</td>";
+									hdata += "<td>"+data[i].bhit+"</td>";
+									hdata += "</tr>";
+								}
+								
+								$("#cont").html(hdata);
+								alert("검색이 완료되었습니다.");
+							},
+							error:function(){
+								alert("실패");
+							}
+						});//ajax
 				   }//if
 			   });//fn_txt_srch	
 			});//jquery
