@@ -4,8 +4,33 @@
 		<meta charset="UTF-8">
 		<title>change</title>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+			$(function(){
+				$("#email3").change(function(){
+					if($("#email3").val()==""){
+						$("#email2").val("");
+						$("#email2").prop("readonly",false);
+						$("#email2").focus();
+						return false;
+					}
+					
+					$("#email2").val($("#email3").val());
+					$("#email2").prop("readonly",true);
+					
+				});
+			});//jquery
+		</script>
 	</head>
 	<body>
+		<label>이메일을 입력하세요.</label><br>
+		<input type="text" name="email1" id="email1">@
+		<input type="text" name="email2" id="email2">
+		<select name="email3" id="email3">
+			<option value="" selected>직접입력</option>
+			<option value="naver.com">naver.com</option>
+			<option value="gmail.com">gmail.com</option>
+			<option value="daum.net">daum.net</option>
+		</select>
 	
 	</body>
 </html>
