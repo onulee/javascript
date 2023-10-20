@@ -24,21 +24,24 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	var cno = 0; //댓글번호
+	
 	$(".replyBtn").click(function(){
-		alert($(".replynum").val());
-		alert($(".replyType").val());
+		//alert($(".replynum").val());
+		//alert($(".replyType").val());
 		
 		// 입력한 내용이 댓글리스트에 추가가 될수 있도록 구현 
 		var today = new Date();
 		var hdate = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
 		var htime = today.getHours()+"-"+today.getMinutes()+"-"+today.getSeconds();
 		var hdata = "";
-		hdata +="<ul>";
+		hdata +="<ul id='"+ cno +"'>";
 		hdata +="<li class='name'>abcdef <span>[ "+hdate+"&nbsp;&nbsp;"+htime+" ]</span></li>";
 		hdata +="<li class='txt'>"+$(".replyType").val()+"</li>";
 		hdata +="<li class='btn'>";
 		hdata +="<a class='rebtn'>수정</a>";
-		hdata +="<a class='rebtn'>삭제</a>";
+		hdata +="<a class='rebtn' onclick='delBtn("+ cno +")'>삭제</a>";
 		hdata +="</li>";
 		hdata +="</ul>";
 		
@@ -49,10 +52,18 @@ $(document).ready(function() {
 		$(".replynum").val("");   //입력된 내용삭제
 		$(".replyType").val("");  //입력된 내용삭제
 		
+		cno++;
 	});//replyBtn
-
-
 });//jquery
+
+function delBtn(cno){
+	if(confirm(cno+ "번째 댓글을 삭제하시겠습니까?")){
+		$("#"+cno).remove();
+		alert("댓글을 삭제했습니다.");
+	}
+}//delBtn
+
+
 </script>
 </head>
 <body>

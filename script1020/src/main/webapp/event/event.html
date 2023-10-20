@@ -24,10 +24,46 @@
 <![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
+	var eno = 0;
 	
+	//제목클릭시
+	
+	// 확인버튼 클릭시
+	$(".sbtnMini").click(function(){
+		//alert($("#etitle").val());
+		var imgurl = $("#efile").val();
+		var iurl = imgurl.substring(imgurl.lastIndexOf('\\')+1);
+		
+		var hdata = "";
+		hdata += "<li id='"+ eno +"'>";
+		hdata += "<div class='img'>";
+		hdata += "<a href='"+$("#eimg").val()+"'><img src='../images/"+ iurl +"' alt='진행중 이벤트' /></a>";
+		hdata += "</div>";
+		hdata += "<div class='txt'>";
+		hdata += "<div class='subject' onclick='eupdate("+eno+")'>"+$("#etitle").val()+"</div>";
+		hdata += "<div class='day'>이벤트 기간 : "+$("#estart").val()+" ~ "+ $("#eend").val() +"</div>";
+		hdata += "</div>";
+		hdata += "</li>";
+		
+		$("#cont").prepend(hdata);
+		
+		alert("이벤트를 등록했습니다.");
+		$("#etitle").val("");
+		$("#econtent").val("");
+		$("#eimg").val("");
+		$("#estart").val("");
+		$("#eend").val("");
+		$("#efile").val("");
+		
+		eno++;
+	});//sbtnMini
+});//jquery
 
+function eupdate(eno){
+	alert("테스트");
+	console.log($("#"+eno).html());
+}
 
-});
 </script>
 </head>
 <body>
@@ -209,50 +245,76 @@ $(document).ready(function() {
 				<div id="mypage">
 					<h2><strong>진행중 이벤트</strong><span>쟈뎅샵의 특별한 혜택이 가득한 이벤트에 참여해 보세요.</span></h2>
 					
+					<!-- 입력창 -->
+					<div class="checkMt">
+						<table summary="분류, 제목, 상세내용, 첨부파일 순으로 궁금하신 점을 문의 하실수 있습니다." class="checkTable" border="1" cellspacing="0">
+							<caption>이벤트 등록</caption>
+							<colgroup>
+							<col width="19%" class="tw30" />
+							<col width="*" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row"><span>제목</span></th>
+									<td>
+										<input type="text" class="wlong" id="etitle" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>상세 내용</span></th>
+									<td>
+										<textarea class="tta" id="econtent"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>이동링크</span></th>
+									<td>
+										<input type="text" class="wlong" id="eimg" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>시작기간</span></th>
+									<td>
+										<input type="date" class="wlong" id="estart" />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span>종료기간</span></th>
+									<td>
+										<input type="date" class="wlong" id="eend" />
+									</td>
+								</tr>
+								
+								
+								<tr>
+									<th scope="row"><span>첨부파일</span></th>
+									<td>
+										<input type="file" class="fileType" id="efile" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<!-- Btn Area -->
+					<div class="btnArea">
+						<div class="bCenter">
+							<ul>																
+								<li><a href="#" class="nbtnbig">취소</a></li>
+								<li><a class="sbtnMini">확인</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //Btn Area -->
+					
+					
+					
 					<!-- list -->
 					<div class="eventList">
-						<ul>
+						<ul id="cont">
 							<!-- 반복 -->
-							<li>
-								<div class="img">
-									<a href="#"><img src="../images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
+							
 							<!-- //반복 -->
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="../images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="../images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
-
-							<li>
-								<div class="img">
-									<a href="#"><img src="../images/img/sample_event.jpg" alt="진행중 이벤트" /></a>
-								</div>
-								<div class="txt">
-									<div class="subject">까페모리 봄바람 커피한잔 30% 할인 이벤트!!</div>
-									<div class="day">이벤트 기간 : 2014-04-01 ~ 2014-04-29</div>
-								</div>
-							</li>
 						</ul>
 					</div>
 					<!-- //list -->
